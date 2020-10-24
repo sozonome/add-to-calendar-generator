@@ -3,13 +3,14 @@ import {
   Button,
   Code,
   FormControl,
+  FormHelperText,
   FormLabel,
   Heading,
   Input,
   Text,
   Textarea,
 } from "@chakra-ui/core";
-import { useFormik } from "formik";
+import { FormikErrors, useFormik } from "formik";
 import { useState } from "react";
 
 import { GOOGLE_CAL_TEMPLATE_LINK } from "../constants/googlecal";
@@ -29,23 +30,37 @@ const Form = () => {
   const [isEditMode, setIsEditMode] = useState<boolean>(true);
   const [isShowingEmbed, setIsShowingEmbed] = useState<boolean>(false);
 
-  const { values, handleChange, handleSubmit } = useFormik<FormInput>({
+  const { values, handleChange, handleSubmit, errors } = useFormik<FormInput>({
     initialValues: {
       title: "",
       description: "",
       location: "",
-      start: new Date().toISOString(),
-      end: new Date().toISOString(),
+      start: new Date().toISOString().substring(0, 16),
+      end: new Date().toISOString().substring(0, 16),
     },
-    onSubmit: () => {
+    validate: (formValues: FormInput) => {
+      const FormErrors: FormikErrors<FormInput> = {};
+
+      if (new Date(formValues.end) < new Date(formValues.start)) {
+        FormErrors.end = "End Date / Time can't be before Start Date / Time";
+      }
+
+      return FormErrors;
+    },
+    onSubmit: (formValues: FormInput) => {
       setLink(
         `${GOOGLE_CAL_TEMPLATE_LINK}${
-          title && "&text=" + title.replace(/[" "]+/g, "+")
-        }${description && "&details=" + description.replace(/[" "]+/g, "+")}${
-          location && "&location=" + location.replace(/[" "]+/g, "+")
-        }&dates=${new Date(start)
+          formValues.title &&
+          "&text=" + formValues.title.replace(/[" "]+/g, "+")
+        }${
+          formValues.description &&
+          "&details=" + formValues.description.replace(/[" "]+/g, "+")
+        }${
+          formValues.location &&
+          "&location=" + formValues.location.replace(/[" "]+/g, "+")
+        }&dates=${new Date(formValues.start)
           .toISOString()
-          .replace(/[-//:]+/g, "")}%2F${new Date(end)
+          .replace(/[-//:]+/g, "")}%2F${new Date(formValues.end)
           .toISOString()
           .replace(/[-//:]+/g, "")}`
       );
@@ -92,6 +107,7 @@ const Form = () => {
 
   return (
     <Box>
+      {console.log({ values, errors })}
       {isEditMode && (
         <>
           <Box marginBottom={6}>
@@ -106,6 +122,7 @@ const Form = () => {
                 value={title}
                 onChange={handleChange}
                 type="text"
+                placeholder="Event Title"
               />
             </FormControl>
 
@@ -115,6 +132,7 @@ const Form = () => {
                 name="description"
                 value={description}
                 onChange={handleChange}
+                placeholder="Describe your event"
               />
             </FormControl>
 
@@ -125,6 +143,7 @@ const Form = () => {
                 value={location}
                 onChange={handleChange}
                 type="text"
+                placeholder="Event Location"
               />
             </FormControl>
           </Box>
@@ -151,10 +170,18 @@ const Form = () => {
                 value={end}
                 type="datetime-local"
                 onChange={handleChange}
+                isInvalid={errors.end ? true : false}
+                errorBorderColor="crimson"
               />
+              {errors.end && <FormHelperText>{errors.end}</FormHelperText>}
             </FormControl>
 
-            <Button onClick={handleSubmit} isFullWidth variantColor="green">
+            <Button
+              isDisabled={Object.keys(errors).length ? true : false}
+              onClick={handleSubmit}
+              isFullWidth
+              variantColor="green"
+            >
               Generate
             </Button>
           </Box>
