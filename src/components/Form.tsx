@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   FormControl,
   FormLabel,
   Heading,
@@ -7,6 +8,9 @@ import {
   Textarea,
 } from "@chakra-ui/core";
 import { useFormik } from "formik";
+import { useState } from "react";
+
+import { GOOGLE_CAL_TEMPLATE_LINK } from "../constants/googlecal";
 
 type FormInput = {
   title: string;
@@ -17,22 +21,39 @@ type FormInput = {
 };
 
 const Form = () => {
+  const [link, setLink] = useState<string>();
+
   const { values, handleChange, handleSubmit } = useFormik<FormInput>({
     initialValues: {
       title: "",
       description: "",
       location: "",
-      start: "",
-      end: "",
+      start: new Date().toISOString(),
+      end: new Date().toISOString(),
     },
-    onSubmit: () => {},
+    onSubmit: (formValues: FormInput) => {
+      const { title, description, location, start, end } = formValues;
+
+      setLink(
+        `${GOOGLE_CAL_TEMPLATE_LINK}${title && "&text=" + title}${
+          description && "&details=" + description
+        }${location && "&location=" + location}&dates=${new Date(start)
+          .toISOString()
+          .replace(/[-//:]+/g, "")}%2F${new Date(end)
+          .toISOString()
+          .replace(/[-//:]+/g, "")}`
+      );
+    },
   });
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(link);
+  };
 
   const { title, description, location, start, end } = values;
 
   return (
     <Box>
-      {console.log(values)}
       <Box marginBottom={6}>
         <Heading size="lg" marginBottom={2}>
           Info
@@ -78,8 +99,8 @@ const Form = () => {
           <Input
             name="start"
             value={start}
-            onChange={handleChange}
             type="datetime-local"
+            onChange={handleChange}
           />
         </FormControl>
 
@@ -88,11 +109,24 @@ const Form = () => {
           <Input
             name="end"
             value={end}
-            onChange={handleChange}
             type="datetime-local"
+            onChange={handleChange}
           />
         </FormControl>
+
+        <Button onClick={handleSubmit} isFullWidth variantColor="green">
+          Generate
+        </Button>
       </Box>
+
+      {link && (
+        <Box marginY={4}>
+          <Textarea value={link} isReadOnly marginBottom={2} />
+          <Button onClick={handleCopyLink} isFullWidth variantColor="blue">
+            Copy Link
+          </Button>
+        </Box>
+      )}
     </Box>
   );
 };
