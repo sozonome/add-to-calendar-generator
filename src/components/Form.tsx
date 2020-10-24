@@ -35,14 +35,21 @@ const Form = () => {
       title: "",
       description: "",
       location: "",
-      start: new Date().toISOString().substring(0, 16),
-      end: new Date().toISOString().substring(0, 16),
+      start:
+        new Date().toISOString().substring(0, 10) +
+        "T" +
+        new Date().toLocaleTimeString().substring(0, 5),
+      end:
+        new Date().toISOString().substring(0, 10) +
+        "T" +
+        new Date().toLocaleTimeString().substring(0, 5),
     },
     validate: (formValues: FormInput) => {
       const FormErrors: FormikErrors<FormInput> = {};
 
       if (new Date(formValues.end) < new Date(formValues.start)) {
-        FormErrors.end = "End Date / Time can't be before Start Date / Time";
+        FormErrors.end =
+          "End Date / Time can't be earlier than Start Date / Time";
       }
 
       return FormErrors;
