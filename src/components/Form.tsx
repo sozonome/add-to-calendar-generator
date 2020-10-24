@@ -39,9 +39,11 @@ const Form = () => {
     },
     onSubmit: () => {
       setLink(
-        `${GOOGLE_CAL_TEMPLATE_LINK}${title && "&text=" + title}${
-          description && "&details=" + description
-        }${location && "&location=" + location}&dates=${new Date(start)
+        `${GOOGLE_CAL_TEMPLATE_LINK}${
+          title && "&text=" + title.replace(/[" "]+/g, "+")
+        }${description && "&details=" + description.replace(/[" "]+/g, "+")}${
+          location && "&location=" + location.replace(/[" "]+/g, "+")
+        }&dates=${new Date(start)
           .toISOString()
           .replace(/[-//:]+/g, "")}%2F${new Date(end)
           .toISOString()
