@@ -3,18 +3,19 @@ import { Box } from "@chakra-ui/core";
 import Header from "./Header";
 import Footer from "./Footer";
 import Meta from "./Meta";
+import { maxWidthProps } from "../../styles/customTheme";
 
 const Layout = ({ children }) => {
   return (
-    <Box margin="0 auto" maxWidth={800}>
+    <Box backgroundColor="gray.100">
       <Meta />
-      <Box margin="8">
-        <Header />
-        <Box as="main" marginY={22}>
+      <Header />
+      <Box>
+        <Box as="main" marginY={22} {...maxWidthProps}>
           {children}
         </Box>
-        <Footer />
       </Box>
+      <Footer />
     </Box>
   );
 };

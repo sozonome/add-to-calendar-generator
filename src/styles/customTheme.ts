@@ -20,4 +20,10 @@ const customTheme: DefaultTheme = {
   },
 };
 
+export const maxWidthProps = {
+  margin: "0 auto",
+  maxWidth: 800,
+  padding: 8,
+};
+
 export default customTheme;

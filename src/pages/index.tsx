@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <Box>
       <Box marginBottom={4}>
-        <Heading color="#444444" as="h2" fontSize="3xl">
+        <Heading color="#444444" as="h2" fontSize="2xl">
           Hello
         </Heading>
         <Box color="#888888">

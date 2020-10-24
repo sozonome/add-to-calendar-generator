@@ -68,6 +68,7 @@ const Form = () => {
       `<a 
       href="${link}" 
       target="_blank" 
+      rel="noopener noreferrer"
       style="
         border: 1px solid black;
         padding: 6px;
@@ -187,22 +188,30 @@ const Form = () => {
               Copy Link
             </Button>
             <Text textAlign="center" color="#888888" fontSize="0.8rem">
-              You can embed this link to your custom button or you can just
-              share this link anywhere.
+              You can copy this link to your custom button or you can just share
+              this link anywhere.
             </Text>
           </Box>
 
           <Box marginY={4}>
-            <Button onClick={generateEmbedButton} isFullWidth marginBottom={2}>
-              Generate Embed Button
-            </Button>
+            {!isShowingEmbed && (
+              <Button
+                onClick={generateEmbedButton}
+                isFullWidth
+                marginBottom={2}
+              >
+                Generate Embed Button
+              </Button>
+            )}
             {isShowingEmbed && (
               <>
                 <Code
-                  width="100%"
-                  height="auto"
-                  wordBreak="break-word"
+                  maxWidth="100%"
                   marginBottom={2}
+                  variantColor="cyan"
+                  padding={3}
+                  borderRadius={6}
+                  fontSize={"0.7rem"}
                 >
                   {embedButton}
                 </Code>
