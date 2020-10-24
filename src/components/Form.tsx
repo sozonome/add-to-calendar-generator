@@ -107,7 +107,6 @@ const Form = () => {
 
   return (
     <Box>
-      {console.log({ values, errors })}
       {isEditMode && (
         <>
           <Box marginBottom={6}>
