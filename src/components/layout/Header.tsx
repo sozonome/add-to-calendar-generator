@@ -1,15 +1,9 @@
-import { Flex, Tooltip, Heading } from "@chakra-ui/core";
+import { Flex, Heading } from "@chakra-ui/core";
 
 const Header = () => {
   return (
     <Flex as="header" width="full" align="center">
-      <Tooltip
-        hasArrow
-        aria-label="Header guide"
-        label="you can edit this Header in /src/components/layout/Header.tsx"
-      >
-        <Heading as="h1">Site / App Title</Heading>
-      </Tooltip>
+      <Heading as="h1">Add to Calendar Generator</Heading>
     </Flex>
   );
 };

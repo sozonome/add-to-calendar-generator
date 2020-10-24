@@ -3,7 +3,7 @@ import Head from "next/head";
 const Meta = () => {
   return (
     <Head>
-      <title>Project Name</title>
+      <title>Add to Calendar Generator</title>
     </Head>
   );
 };

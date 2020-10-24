@@ -1,15 +1,15 @@
-import { Flex, Text, Tooltip } from "@chakra-ui/core";
+import { Link } from "@chakra-ui/core";
+import { Flex, Text } from "@chakra-ui/core";
 
 const Footer = () => {
   return (
     <Flex as="footer" width="full" align="center">
-      <Tooltip
-        hasArrow
-        aria-label="Footer guide"
-        label="you can edit this Footer in /src/components/layout/Footer.tsx"
-      >
-        <Text>2020 - Footer Text Here</Text>
-      </Tooltip>
+      <Text>
+        2020 -{" "}
+        <Link isExternal href="https://sznm.dev" fontWeight={500}>
+          sznm.dev
+        </Link>
+      </Text>
     </Flex>
   );
 };

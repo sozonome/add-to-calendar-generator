@@ -1,23 +1,21 @@
-import { Flex, Box, Image, Heading } from "@chakra-ui/core";
-
-import SomeText from "../components/SomeText";
+import { Flex, Box, Heading, Image } from "@chakra-ui/core";
+import Form from "../components/Form";
 
 const Home = () => {
   return (
-    <Flex mb={8} w="full">
-      <Box>
-        <Heading as="h2" fontSize="3xl">
-          Hello
-        </Heading>
-        <SomeText />
-        <Image
-          src="/undraw_Status_update_re_dm9y.png"
-          maxWidth="400px"
-          marginY={8}
-          width="100%"
-        />
+    <Box>
+      <Heading as="h2" fontSize="3xl" marginBottom={8}>
+        Hello
+      </Heading>
+      <Box display={["block", "block", "flex"]}>
+        <Box flexBasis="50%">
+          <Image src={"/Events-bro.svg"} maxWidth={["100%", "60%", "80%"]} />
+        </Box>
+        <Box flexBasis="50%">
+          <Form />
+        </Box>
       </Box>
-    </Flex>
+    </Box>
   );
 };
 

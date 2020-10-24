@@ -1,5 +1,6 @@
 import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 import Head from "next/head";
+import "typeface-rubik";
 
 import Layout from "../components/layout";
 
