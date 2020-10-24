@@ -1,4 +1,4 @@
-import { Flex, Box, Heading, Image, Text } from "@chakra-ui/core";
+import { Box, Heading, Image, Text } from "@chakra-ui/core";
 import Form from "../components/Form";
 
 const Home = () => {

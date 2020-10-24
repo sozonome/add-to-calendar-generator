@@ -37,9 +37,7 @@ const Form = () => {
       start: new Date().toISOString(),
       end: new Date().toISOString(),
     },
-    onSubmit: (formValues: FormInput) => {
-      const { title, description, location, start, end } = formValues;
-
+    onSubmit: () => {
       setLink(
         `${GOOGLE_CAL_TEMPLATE_LINK}${title && "&text=" + title}${
           description && "&details=" + description
@@ -206,7 +204,7 @@ const Form = () => {
             {isShowingEmbed && (
               <>
                 <Code
-                  maxWidth="100%"
+                  wordBreak="break-word"
                   marginBottom={2}
                   variantColor="cyan"
                   padding={3}
