@@ -61,7 +61,7 @@ const Form = () => {
           "&text=" + formValues.title.replace(/[" "]+/g, "+")
         }${
           formValues.description &&
-          "&details=" + formValues.description.replace(/[" "]+/g, "+")
+          "&details=" + encodeURI(formValues.description)
         }${
           formValues.location &&
           "&location=" + formValues.location.replace(/[" "]+/g, "+")
