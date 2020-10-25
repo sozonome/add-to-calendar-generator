@@ -13,6 +13,8 @@ import {
 import { FormikErrors, useFormik } from "formik";
 import { useState } from "react";
 
+import { getLocaleTimeString } from "../helpers/getLocaleTimeString";
+
 import { GOOGLE_CAL_TEMPLATE_LINK } from "../constants/googlecal";
 
 type FormInput = {
@@ -35,14 +37,8 @@ const Form = () => {
       title: "",
       description: "",
       location: "",
-      start:
-        new Date().toISOString().substring(0, 10) +
-        "T" +
-        new Date().toLocaleTimeString().substring(0, 5),
-      end:
-        new Date().toISOString().substring(0, 10) +
-        "T" +
-        new Date().toLocaleTimeString().substring(0, 5),
+      start: getLocaleTimeString(),
+      end: getLocaleTimeString(),
     },
     validate: (formValues: FormInput) => {
       const FormErrors: FormikErrors<FormInput> = {};
