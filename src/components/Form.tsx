@@ -1,12 +1,15 @@
 import {
   Box,
+  BoxProps,
   Button,
+  ButtonProps,
   Code,
   FormControl,
   FormHelperText,
   FormLabel,
   Heading,
   Input,
+  PseudoBoxProps,
   Text,
   Textarea,
 } from "@chakra-ui/core";
@@ -106,18 +109,24 @@ const Form = () => {
 
   const { title, description, location, start, end } = values;
 
+  const contraBoxStyle: BoxProps = {
+    padding: 4,
+    borderRadius: 16,
+    border: "2px solid black",
+    boxShadow: "0px 6px 0px #18191F;",
+  };
+
+  const contraButtonStyle: Partial<ButtonProps> = {
+    borderRadius: 16,
+    border: "2px solid black",
+    boxShadow: "0px 4px 0px #18191F;",
+  };
+
   return (
     <Box>
       {isEditMode && (
         <>
-          <Box
-            marginBottom={6}
-            backgroundColor="white"
-            padding={4}
-            borderRadius={16}
-            border="2px solid black"
-            boxShadow="0px 6px 0px #18191F;"
-          >
+          <Box marginBottom={6} backgroundColor="white" {...contraBoxStyle}>
             <Heading size="lg" marginBottom={2}>
               Info
             </Heading>
@@ -164,10 +173,7 @@ const Form = () => {
           <Box
             marginBottom={8}
             backgroundColor="yellow.400"
-            padding={4}
-            borderRadius={16}
-            border="2px solid black"
-            boxShadow="0px 6px 0px #18191F;"
+            {...contraBoxStyle}
           >
             <Heading size="lg" marginBottom={2}>
               Time
@@ -207,7 +213,7 @@ const Form = () => {
             isFullWidth
             backgroundColor="black"
             color="white"
-            borderRadius={16}
+            {...contraButtonStyle}
           >
             Generate
           </Button>
@@ -218,9 +224,10 @@ const Form = () => {
         <Box marginY={4}>
           <Button
             onClick={backToEditMode}
-            marginBottom={2}
+            marginBottom={4}
             leftIcon={"arrow-back"}
-            backgroundColor="blue.700"
+            backgroundColor="white"
+            {...contraButtonStyle}
           >
             Back
           </Button>
@@ -232,13 +239,15 @@ const Form = () => {
               isReadOnly
               marginBottom={2}
               fontSize={"0.9rem"}
-              backgroundColor="blue.700"
+              color="white"
             />
             <Button
               onClick={handleCopyLink}
               isFullWidth
-              backgroundColor="blue.800"
+              backgroundColor="blue.700"
+              color="white"
               marginBottom={2}
+              {...contraButtonStyle}
             >
               Copy Link
             </Button>
@@ -255,6 +264,8 @@ const Form = () => {
                 isFullWidth
                 marginBottom={2}
                 backgroundColor="blue.500"
+                color="white"
+                {...contraButtonStyle}
               >
                 Generate Embed Button
               </Button>
@@ -276,6 +287,7 @@ const Form = () => {
                   onClick={handleCopyEmbedButton}
                   variantColor="cyan"
                   marginBottom={2}
+                  {...contraButtonStyle}
                 >
                   Copy Embed Button
                 </Button>
