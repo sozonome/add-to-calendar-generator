@@ -7,7 +7,7 @@ import { maxWidthProps } from "../../styles/customTheme";
 
 const Layout = ({ children }) => {
   return (
-    <Box backgroundColor="gray.100">
+    <Box backgroundColor="blue.600" minHeight="100vh">
       <Meta />
       <Header />
       <Box>

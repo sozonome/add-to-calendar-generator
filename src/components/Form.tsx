@@ -110,7 +110,14 @@ const Form = () => {
     <Box>
       {isEditMode && (
         <>
-          <Box marginBottom={6}>
+          <Box
+            marginBottom={6}
+            backgroundColor="white"
+            padding={4}
+            borderRadius={16}
+            border="2px solid black"
+            boxShadow="0px 6px 0px #18191F;"
+          >
             <Heading size="lg" marginBottom={2}>
               Info
             </Heading>
@@ -123,6 +130,8 @@ const Form = () => {
                 onChange={handleChange}
                 type="text"
                 placeholder="Event Title"
+                borderColor="black"
+                borderRadius={8}
               />
             </FormControl>
 
@@ -133,6 +142,8 @@ const Form = () => {
                 value={description}
                 onChange={handleChange}
                 placeholder="Describe your event"
+                borderColor="black"
+                borderRadius={8}
               />
             </FormControl>
 
@@ -144,11 +155,20 @@ const Form = () => {
                 onChange={handleChange}
                 type="text"
                 placeholder="Event Location"
+                borderColor="black"
+                borderRadius={8}
               />
             </FormControl>
           </Box>
 
-          <Box marginBottom={8}>
+          <Box
+            marginBottom={8}
+            backgroundColor="yellow.400"
+            padding={4}
+            borderRadius={16}
+            border="2px solid black"
+            boxShadow="0px 6px 0px #18191F;"
+          >
             <Heading size="lg" marginBottom={2}>
               Time
             </Heading>
@@ -160,6 +180,8 @@ const Form = () => {
                 value={start}
                 type="datetime-local"
                 onChange={handleChange}
+                borderColor="black"
+                borderRadius={8}
               />
             </FormControl>
 
@@ -172,19 +194,23 @@ const Form = () => {
                 onChange={handleChange}
                 isInvalid={errors.end ? true : false}
                 errorBorderColor="crimson"
+                borderColor="black"
+                borderRadius={8}
               />
               {errors.end && <FormHelperText>{errors.end}</FormHelperText>}
             </FormControl>
-
-            <Button
-              isDisabled={Object.keys(errors).length ? true : false}
-              onClick={handleSubmit}
-              isFullWidth
-              variantColor="green"
-            >
-              Generate
-            </Button>
           </Box>
+
+          <Button
+            isDisabled={Object.keys(errors).length ? true : false}
+            onClick={handleSubmit}
+            isFullWidth
+            backgroundColor="black"
+            color="white"
+            borderRadius={16}
+          >
+            Generate
+          </Button>
         </>
       )}
 
@@ -194,6 +220,7 @@ const Form = () => {
             onClick={backToEditMode}
             marginBottom={2}
             leftIcon={"arrow-back"}
+            backgroundColor="blue.700"
           >
             Back
           </Button>
@@ -205,16 +232,17 @@ const Form = () => {
               isReadOnly
               marginBottom={2}
               fontSize={"0.9rem"}
+              backgroundColor="blue.700"
             />
             <Button
               onClick={handleCopyLink}
               isFullWidth
-              variantColor="blue"
+              backgroundColor="blue.800"
               marginBottom={2}
             >
               Copy Link
             </Button>
-            <Text textAlign="center" color="#888888" fontSize="0.8rem">
+            <Text textAlign="center" color="gray.200" fontSize="0.8rem">
               You can copy this link to your custom button or you can just share
               this link anywhere.
             </Text>
@@ -226,6 +254,7 @@ const Form = () => {
                 onClick={generateEmbedButton}
                 isFullWidth
                 marginBottom={2}
+                backgroundColor="blue.500"
               >
                 Generate Embed Button
               </Button>
@@ -250,7 +279,7 @@ const Form = () => {
                 >
                   Copy Embed Button
                 </Button>
-                <Text textAlign="center" fontSize="0.8rem" color="#888888">
+                <Text textAlign="center" fontSize="0.8rem" color="gray.200">
                   Copy the embed button to your web page.
                 </Text>
               </>
