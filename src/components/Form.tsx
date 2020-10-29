@@ -238,7 +238,9 @@ const Form = () => {
                   borderColor="black"
                   borderRadius={8}
                 />
-                {errors.end && <FormHelperText>{errors.end}</FormHelperText>}
+                {errors.end && (
+                  <FormHelperText color="red.600">{errors.end}</FormHelperText>
+                )}
               </FormControl>
             </Box>
           </MotionBox>
