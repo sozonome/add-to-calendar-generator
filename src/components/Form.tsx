@@ -1,12 +1,15 @@
 import {
   Box,
+  BoxProps,
   Button,
+  ButtonProps,
   Code,
   FormControl,
   FormHelperText,
   FormLabel,
   Heading,
   Input,
+  PseudoBoxProps,
   Text,
   Textarea,
 } from "@chakra-ui/core";
@@ -16,6 +19,8 @@ import { useState } from "react";
 import { getLocaleTimeString } from "../helpers/getLocaleTimeString";
 
 import { GOOGLE_CAL_TEMPLATE_LINK } from "../constants/googlecal";
+import MotionBox from "./MotionBox";
+import { CustomDomComponent } from "framer-motion";
 
 type FormInput = {
   title: string;
@@ -106,94 +111,163 @@ const Form = () => {
 
   const { title, description, location, start, end } = values;
 
+  const contraBoxStyle: Partial<BoxProps> = {
+    padding: 4,
+    borderRadius: 16,
+    border: "2px solid black",
+    boxShadow: "0px 6px 0px #18191F;",
+  };
+
+  const contraButtonStyle: Partial<ButtonProps> = {
+    borderRadius: 16,
+    border: "2px solid black",
+    boxShadow: "0px 4px 0px #18191F;",
+  };
+
+  const childAnimationProps = {
+    variants: {
+      before: {
+        opacity: 0,
+        y: 20,
+        transition: {
+          type: "spring",
+          damping: 16,
+          stiffness: 200,
+        },
+      },
+      after: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          type: "spring",
+          damping: 16,
+          stiffness: 200,
+        },
+      },
+    },
+  };
+
   return (
-    <Box>
+    <MotionBox
+      variants={{
+        before: {},
+        after: { transition: { staggerChildren: 0.06 } },
+      }}
+      initial="before"
+      animate="after"
+    >
       {isEditMode && (
         <>
-          <Box marginBottom={6}>
-            <Heading size="lg" marginBottom={2}>
-              Info
-            </Heading>
+          <MotionBox {...childAnimationProps}>
+            <Box marginBottom={6} backgroundColor="white" {...contraBoxStyle}>
+              <Heading size="lg" marginBottom={2}>
+                Info
+              </Heading>
 
-            <FormControl marginBottom={4} isRequired>
-              <FormLabel>Title</FormLabel>
-              <Input
-                name="title"
-                value={title}
-                onChange={handleChange}
-                type="text"
-                placeholder="Event Title"
-              />
-            </FormControl>
+              <FormControl marginBottom={4} isRequired>
+                <FormLabel>Title</FormLabel>
+                <Input
+                  name="title"
+                  value={title}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Event Title"
+                  borderColor="black"
+                  borderRadius={8}
+                />
+              </FormControl>
 
-            <FormControl marginBottom={4}>
-              <FormLabel>Description</FormLabel>
-              <Textarea
-                name="description"
-                value={description}
-                onChange={handleChange}
-                placeholder="Describe your event"
-              />
-            </FormControl>
+              <FormControl marginBottom={4}>
+                <FormLabel>Description</FormLabel>
+                <Textarea
+                  name="description"
+                  value={description}
+                  onChange={handleChange}
+                  placeholder="Describe your event"
+                  borderColor="black"
+                  borderRadius={8}
+                />
+              </FormControl>
 
-            <FormControl marginBottom={4}>
-              <FormLabel>Location</FormLabel>
-              <Input
-                name="location"
-                value={location}
-                onChange={handleChange}
-                type="text"
-                placeholder="Event Location"
-              />
-            </FormControl>
-          </Box>
+              <FormControl marginBottom={4}>
+                <FormLabel>Location</FormLabel>
+                <Input
+                  name="location"
+                  value={location}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Event Location"
+                  borderColor="black"
+                  borderRadius={8}
+                />
+              </FormControl>
+            </Box>
+          </MotionBox>
 
-          <Box marginBottom={8}>
-            <Heading size="lg" marginBottom={2}>
-              Time
-            </Heading>
+          <MotionBox {...childAnimationProps}>
+            <Box
+              marginBottom={8}
+              backgroundColor="yellow.400"
+              {...contraBoxStyle}
+            >
+              <Heading size="lg" marginBottom={2}>
+                Time
+              </Heading>
 
-            <FormControl marginBottom={4}>
-              <FormLabel>Start</FormLabel>
-              <Input
-                name="start"
-                value={start}
-                type="datetime-local"
-                onChange={handleChange}
-              />
-            </FormControl>
+              <FormControl marginBottom={4}>
+                <FormLabel>Start</FormLabel>
+                <Input
+                  name="start"
+                  value={start}
+                  type="datetime-local"
+                  onChange={handleChange}
+                  borderColor="black"
+                  borderRadius={8}
+                />
+              </FormControl>
 
-            <FormControl marginBottom={4}>
-              <FormLabel>End</FormLabel>
-              <Input
-                name="end"
-                value={end}
-                type="datetime-local"
-                onChange={handleChange}
-                isInvalid={errors.end ? true : false}
-                errorBorderColor="crimson"
-              />
-              {errors.end && <FormHelperText>{errors.end}</FormHelperText>}
-            </FormControl>
+              <FormControl marginBottom={4}>
+                <FormLabel>End</FormLabel>
+                <Input
+                  name="end"
+                  value={end}
+                  type="datetime-local"
+                  onChange={handleChange}
+                  isInvalid={errors.end ? true : false}
+                  errorBorderColor="crimson"
+                  borderColor="black"
+                  borderRadius={8}
+                />
+                {errors.end && (
+                  <FormHelperText color="red.600">{errors.end}</FormHelperText>
+                )}
+              </FormControl>
+            </Box>
+          </MotionBox>
 
+          <MotionBox {...childAnimationProps}>
             <Button
               isDisabled={Object.keys(errors).length ? true : false}
               onClick={handleSubmit}
               isFullWidth
-              variantColor="green"
+              backgroundColor="black"
+              color="white"
+              {...contraButtonStyle}
             >
               Generate
             </Button>
-          </Box>
+          </MotionBox>
         </>
       )}
 
       {link && !isEditMode && (
-        <Box marginY={4}>
+        <MotionBox marginY={4} {...childAnimationProps}>
           <Button
             onClick={backToEditMode}
-            marginBottom={2}
+            marginBottom={4}
             leftIcon={"arrow-back"}
+            backgroundColor="white"
+            {...contraButtonStyle}
           >
             Back
           </Button>
@@ -205,16 +279,19 @@ const Form = () => {
               isReadOnly
               marginBottom={2}
               fontSize={"0.9rem"}
+              color="white"
             />
             <Button
               onClick={handleCopyLink}
               isFullWidth
-              variantColor="blue"
+              backgroundColor="blue.700"
+              color="white"
               marginBottom={2}
+              {...contraButtonStyle}
             >
               Copy Link
             </Button>
-            <Text textAlign="center" color="#888888" fontSize="0.8rem">
+            <Text textAlign="center" color="gray.200" fontSize="0.8rem">
               You can copy this link to your custom button or you can just share
               this link anywhere.
             </Text>
@@ -226,6 +303,9 @@ const Form = () => {
                 onClick={generateEmbedButton}
                 isFullWidth
                 marginBottom={2}
+                backgroundColor="blue.500"
+                color="white"
+                {...contraButtonStyle}
               >
                 Generate Embed Button
               </Button>
@@ -247,18 +327,19 @@ const Form = () => {
                   onClick={handleCopyEmbedButton}
                   variantColor="cyan"
                   marginBottom={2}
+                  {...contraButtonStyle}
                 >
                   Copy Embed Button
                 </Button>
-                <Text textAlign="center" fontSize="0.8rem" color="#888888">
+                <Text textAlign="center" fontSize="0.8rem" color="gray.200">
                   Copy the embed button to your web page.
                 </Text>
               </>
             )}
           </Box>
-        </Box>
+        </MotionBox>
       )}
-    </Box>
+    </MotionBox>
   );
 };
 
