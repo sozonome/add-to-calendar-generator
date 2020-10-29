@@ -3,13 +3,7 @@ import { maxWidthProps } from "../../styles/customTheme";
 
 const Header = () => {
   return (
-    <Flex
-      as="header"
-      width="full"
-      align="center"
-      backgroundColor="blue.600"
-      // boxShadow={"0px 4px 14px 1px rgba(0,0,0,0.15);"}
-    >
+    <Flex as="header" width="full" align="center" backgroundColor="blue.600">
       <Box {...maxWidthProps} flexBasis="100%">
         <Heading
           as="h1"

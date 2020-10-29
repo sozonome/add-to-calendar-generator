@@ -19,6 +19,8 @@ import { useState } from "react";
 import { getLocaleTimeString } from "../helpers/getLocaleTimeString";
 
 import { GOOGLE_CAL_TEMPLATE_LINK } from "../constants/googlecal";
+import MotionBox from "./MotionBox";
+import { CustomDomComponent } from "framer-motion";
 
 type FormInput = {
   title: string;
@@ -109,7 +111,7 @@ const Form = () => {
 
   const { title, description, location, start, end } = values;
 
-  const contraBoxStyle: BoxProps = {
+  const contraBoxStyle: Partial<BoxProps> = {
     padding: 4,
     borderRadius: 16,
     border: "2px solid black",
@@ -122,106 +124,142 @@ const Form = () => {
     boxShadow: "0px 4px 0px #18191F;",
   };
 
+  const childAnimationProps = {
+    variants: {
+      before: {
+        opacity: 0,
+        y: 20,
+        transition: {
+          type: "spring",
+          damping: 16,
+          stiffness: 200,
+        },
+      },
+      after: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          type: "spring",
+          damping: 16,
+          stiffness: 200,
+        },
+      },
+    },
+  };
+
   return (
-    <Box>
+    <MotionBox
+      variants={{
+        before: {},
+        after: { transition: { staggerChildren: 0.06 } },
+      }}
+      initial="before"
+      animate="after"
+    >
       {isEditMode && (
         <>
-          <Box marginBottom={6} backgroundColor="white" {...contraBoxStyle}>
-            <Heading size="lg" marginBottom={2}>
-              Info
-            </Heading>
+          <MotionBox {...childAnimationProps}>
+            <Box marginBottom={6} backgroundColor="white" {...contraBoxStyle}>
+              <Heading size="lg" marginBottom={2}>
+                Info
+              </Heading>
 
-            <FormControl marginBottom={4} isRequired>
-              <FormLabel>Title</FormLabel>
-              <Input
-                name="title"
-                value={title}
-                onChange={handleChange}
-                type="text"
-                placeholder="Event Title"
-                borderColor="black"
-                borderRadius={8}
-              />
-            </FormControl>
+              <FormControl marginBottom={4} isRequired>
+                <FormLabel>Title</FormLabel>
+                <Input
+                  name="title"
+                  value={title}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Event Title"
+                  borderColor="black"
+                  borderRadius={8}
+                />
+              </FormControl>
 
-            <FormControl marginBottom={4}>
-              <FormLabel>Description</FormLabel>
-              <Textarea
-                name="description"
-                value={description}
-                onChange={handleChange}
-                placeholder="Describe your event"
-                borderColor="black"
-                borderRadius={8}
-              />
-            </FormControl>
+              <FormControl marginBottom={4}>
+                <FormLabel>Description</FormLabel>
+                <Textarea
+                  name="description"
+                  value={description}
+                  onChange={handleChange}
+                  placeholder="Describe your event"
+                  borderColor="black"
+                  borderRadius={8}
+                />
+              </FormControl>
 
-            <FormControl marginBottom={4}>
-              <FormLabel>Location</FormLabel>
-              <Input
-                name="location"
-                value={location}
-                onChange={handleChange}
-                type="text"
-                placeholder="Event Location"
-                borderColor="black"
-                borderRadius={8}
-              />
-            </FormControl>
-          </Box>
+              <FormControl marginBottom={4}>
+                <FormLabel>Location</FormLabel>
+                <Input
+                  name="location"
+                  value={location}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Event Location"
+                  borderColor="black"
+                  borderRadius={8}
+                />
+              </FormControl>
+            </Box>
+          </MotionBox>
 
-          <Box
-            marginBottom={8}
-            backgroundColor="yellow.400"
-            {...contraBoxStyle}
-          >
-            <Heading size="lg" marginBottom={2}>
-              Time
-            </Heading>
+          <MotionBox {...childAnimationProps}>
+            <Box
+              marginBottom={8}
+              backgroundColor="yellow.400"
+              {...contraBoxStyle}
+            >
+              <Heading size="lg" marginBottom={2}>
+                Time
+              </Heading>
 
-            <FormControl marginBottom={4}>
-              <FormLabel>Start</FormLabel>
-              <Input
-                name="start"
-                value={start}
-                type="datetime-local"
-                onChange={handleChange}
-                borderColor="black"
-                borderRadius={8}
-              />
-            </FormControl>
+              <FormControl marginBottom={4}>
+                <FormLabel>Start</FormLabel>
+                <Input
+                  name="start"
+                  value={start}
+                  type="datetime-local"
+                  onChange={handleChange}
+                  borderColor="black"
+                  borderRadius={8}
+                />
+              </FormControl>
 
-            <FormControl marginBottom={4}>
-              <FormLabel>End</FormLabel>
-              <Input
-                name="end"
-                value={end}
-                type="datetime-local"
-                onChange={handleChange}
-                isInvalid={errors.end ? true : false}
-                errorBorderColor="crimson"
-                borderColor="black"
-                borderRadius={8}
-              />
-              {errors.end && <FormHelperText>{errors.end}</FormHelperText>}
-            </FormControl>
-          </Box>
+              <FormControl marginBottom={4}>
+                <FormLabel>End</FormLabel>
+                <Input
+                  name="end"
+                  value={end}
+                  type="datetime-local"
+                  onChange={handleChange}
+                  isInvalid={errors.end ? true : false}
+                  errorBorderColor="crimson"
+                  borderColor="black"
+                  borderRadius={8}
+                />
+                {errors.end && <FormHelperText>{errors.end}</FormHelperText>}
+              </FormControl>
+            </Box>
+          </MotionBox>
 
-          <Button
-            isDisabled={Object.keys(errors).length ? true : false}
-            onClick={handleSubmit}
-            isFullWidth
-            backgroundColor="black"
-            color="white"
-            {...contraButtonStyle}
-          >
-            Generate
-          </Button>
+          <MotionBox {...childAnimationProps}>
+            <Button
+              isDisabled={Object.keys(errors).length ? true : false}
+              onClick={handleSubmit}
+              isFullWidth
+              backgroundColor="black"
+              color="white"
+              {...contraButtonStyle}
+            >
+              Generate
+            </Button>
+          </MotionBox>
         </>
       )}
 
       {link && !isEditMode && (
-        <Box marginY={4}>
+        <MotionBox marginY={4} {...childAnimationProps}>
           <Button
             onClick={backToEditMode}
             marginBottom={4}
@@ -297,9 +335,9 @@ const Form = () => {
               </>
             )}
           </Box>
-        </Box>
+        </MotionBox>
       )}
-    </Box>
+    </MotionBox>
   );
 };
 
