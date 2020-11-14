@@ -1,5 +1,5 @@
-import { Link } from "@chakra-ui/core";
-import { Flex, Text } from "@chakra-ui/core";
+import { Link } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { maxWidthProps } from "../../styles/customTheme";
 
 const Footer = () => {
