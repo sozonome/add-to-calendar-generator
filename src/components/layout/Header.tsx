@@ -1,4 +1,4 @@
-import { Box, Flex, Heading } from "@chakra-ui/core";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import { maxWidthProps } from "../../styles/customTheme";
 
 const Header = () => {

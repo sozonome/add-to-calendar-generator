@@ -9,18 +9,18 @@ import {
   FormLabel,
   Heading,
   Input,
-  PseudoBoxProps,
   Text,
   Textarea,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import { FormikErrors, useFormik } from "formik";
 import { useState } from "react";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+
+import MotionBox from "./MotionBox";
 
 import { getLocaleTimeString } from "../helpers/getLocaleTimeString";
 
 import { GOOGLE_CAL_TEMPLATE_LINK } from "../constants/googlecal";
-import MotionBox from "./MotionBox";
-import { CustomDomComponent } from "framer-motion";
 
 type FormInput = {
   title: string;
@@ -248,7 +248,7 @@ const Form = () => {
           <MotionBox {...childAnimationProps}>
             <Button
               isDisabled={Object.keys(errors).length ? true : false}
-              onClick={handleSubmit}
+              onClick={() => handleSubmit()}
               isFullWidth
               backgroundColor="black"
               color="white"
@@ -265,7 +265,7 @@ const Form = () => {
           <Button
             onClick={backToEditMode}
             marginBottom={4}
-            leftIcon={"arrow-back"}
+            leftIcon={<AiOutlineArrowLeft />}
             backgroundColor="white"
             {...contraButtonStyle}
           >
@@ -315,7 +315,7 @@ const Form = () => {
                 <Code
                   wordBreak="break-word"
                   marginBottom={2}
-                  variantColor="cyan"
+                  colorScheme="cyan"
                   padding={3}
                   borderRadius={6}
                   fontSize={"0.7rem"}
@@ -325,7 +325,7 @@ const Form = () => {
                 <Button
                   isFullWidth
                   onClick={handleCopyEmbedButton}
-                  variantColor="cyan"
+                  colorScheme="cyan"
                   marginBottom={2}
                   {...contraButtonStyle}
                 >
