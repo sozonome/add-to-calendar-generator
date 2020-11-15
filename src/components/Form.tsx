@@ -1,3 +1,8 @@
+/**
+ * @todo
+ * [ ] refactor this component into smaller components to improve maintainability and readability
+ */
+
 import {
   Box,
   BoxProps,
@@ -11,6 +16,7 @@ import {
   Input,
   Text,
   Textarea,
+  useColorMode,
 } from "@chakra-ui/react";
 import { FormikErrors, useFormik } from "formik";
 import { useState } from "react";
@@ -31,6 +37,8 @@ type FormInput = {
 };
 
 const Form = () => {
+  const { colorMode } = useColorMode();
+
   const [link, setLink] = useState<string>();
   const [embedButton, setEmbedButton] = useState<string>();
 
@@ -159,7 +167,11 @@ const Form = () => {
       {isEditMode && (
         <>
           <MotionBox {...childAnimationProps}>
-            <Box marginBottom={6} backgroundColor="white" {...contraBoxStyle}>
+            <Box
+              marginBottom={6}
+              backgroundColor={colorMode === "light" ? "white" : "gray.700"}
+              {...contraBoxStyle}
+            >
               <Heading size="lg" marginBottom={2}>
                 Info
               </Heading>
@@ -174,6 +186,7 @@ const Form = () => {
                   placeholder="Event Title"
                   borderColor="black"
                   borderRadius={8}
+                  variant="filled"
                 />
               </FormControl>
 
@@ -186,6 +199,7 @@ const Form = () => {
                   placeholder="Describe your event"
                   borderColor="black"
                   borderRadius={8}
+                  variant="filled"
                 />
               </FormControl>
 
@@ -199,6 +213,7 @@ const Form = () => {
                   placeholder="Event Location"
                   borderColor="black"
                   borderRadius={8}
+                  variant="filled"
                 />
               </FormControl>
             </Box>
@@ -207,7 +222,9 @@ const Form = () => {
           <MotionBox {...childAnimationProps}>
             <Box
               marginBottom={8}
-              backgroundColor="yellow.400"
+              backgroundColor={
+                colorMode === "light" ? "yellow.400" : "yellow.600"
+              }
               {...contraBoxStyle}
             >
               <Heading size="lg" marginBottom={2}>
@@ -223,6 +240,7 @@ const Form = () => {
                   onChange={handleChange}
                   borderColor="black"
                   borderRadius={8}
+                  variant="filled"
                 />
               </FormControl>
 
@@ -237,6 +255,7 @@ const Form = () => {
                   errorBorderColor="crimson"
                   borderColor="black"
                   borderRadius={8}
+                  variant="filled"
                 />
                 {errors.end && (
                   <FormHelperText color="red.600">{errors.end}</FormHelperText>
@@ -250,7 +269,7 @@ const Form = () => {
               isDisabled={Object.keys(errors).length ? true : false}
               onClick={() => handleSubmit()}
               isFullWidth
-              backgroundColor="black"
+              backgroundColor={colorMode === "light" ? "black" : "gray.600"}
               color="white"
               {...contraButtonStyle}
             >
@@ -266,7 +285,7 @@ const Form = () => {
             onClick={backToEditMode}
             marginBottom={4}
             leftIcon={<AiOutlineArrowLeft />}
-            backgroundColor="white"
+            backgroundColor={colorMode === "light" ? "white" : "gray.600"}
             {...contraButtonStyle}
           >
             Back

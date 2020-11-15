@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, useColorMode } from "@chakra-ui/react";
 
 import Header from "./Header";
 import Footer from "./Footer";
@@ -6,8 +6,13 @@ import Meta from "./Meta";
 import { maxWidthProps } from "../../styles/customTheme";
 
 const Layout = ({ children }) => {
+  const { colorMode } = useColorMode();
+
   return (
-    <Box backgroundColor="blue.600" minHeight="100vh">
+    <Box
+      backgroundColor={colorMode === "light" ? "blue.600" : "gray.800"}
+      minHeight="100vh"
+    >
       <Meta />
       <Header />
       <Box>
