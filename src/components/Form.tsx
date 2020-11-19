@@ -66,12 +66,12 @@ const Form = () => {
     onSubmit: (formValues: FormInput) => {
       setLink(
         `${GOOGLE_CAL_TEMPLATE_LINK}${
-          formValues.title && "&text=" + encodeURI(formValues.title)
+          formValues.title && `&text=${  encodeURI(formValues.title)}`
         }${
           formValues.description &&
-          "&details=" + encodeURI(formValues.description)
+          `&details=${  encodeURI(formValues.description)}`
         }${
-          formValues.location && "&location=" + encodeURI(formValues.location)
+          formValues.location && `&location=${  encodeURI(formValues.location)}`
         }&dates=${new Date(formValues.start)
           .toISOString()
           .replace(/[-//:]+/g, "")}%2F${new Date(formValues.end)
