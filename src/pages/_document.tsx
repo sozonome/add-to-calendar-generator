@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 const APP_NAME = "add-to-calendar-generator";
-const APP_DESCRIPTION = "add to Calendar Generator";
+const APP_DESCRIPTION = "Add to Calendar Generator";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
