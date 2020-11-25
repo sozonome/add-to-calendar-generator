@@ -74,7 +74,10 @@ const AppMenu = () => {
                   alignItems="center"
                   padding={2}
                   borderRadius={12}
-                  _hover={{ backgroundColor: "gray.200" }}
+                  _hover={{
+                    backgroundColor:
+                      colorMode === "light" ? "gray.200" : "gray.600",
+                  }}
                 >
                   <Image src={icon} width={12} />
                   <Box marginLeft={4}>
