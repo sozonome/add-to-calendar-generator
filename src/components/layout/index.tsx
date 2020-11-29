@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
 
   return (
     <Box
-      backgroundColor={colorMode === "light" ? "blue.600" : "gray.800"}
+      backgroundColor={colorMode === "light" ? "gray.50" : "gray.900"}
       minHeight="100vh"
     >
       <Meta />

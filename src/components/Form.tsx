@@ -298,7 +298,6 @@ const Form = () => {
               isReadOnly
               marginBottom={2}
               fontSize={"0.9rem"}
-              color="white"
             />
             <Button
               onClick={handleCopyLink}
@@ -310,7 +309,7 @@ const Form = () => {
             >
               Copy Link
             </Button>
-            <Text textAlign="center" color="gray.200" fontSize="0.8rem">
+            <Text textAlign="center" fontSize="0.8rem">
               You can copy this link to your custom button or you can just share
               this link anywhere.
             </Text>
