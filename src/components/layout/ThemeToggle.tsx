@@ -10,7 +10,7 @@ const ThemeToggle = () => {
       aria-label="theme toggle"
       icon={colorMode === "light" ? <CgMoon /> : <CgSun />}
       onClick={toggleColorMode}
-      backgroundColor={colorMode === "light" ? "blue.400" : "gray.500"}
+      backgroundColor={colorMode === "light" ? "gray.50" : "gray.700"}
     />
   );
 };

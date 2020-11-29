@@ -4,13 +4,7 @@ import { maxWidthProps } from "../../styles/customTheme";
 
 const Footer = () => {
   return (
-    <Flex
-      as="footer"
-      color="white"
-      width="full"
-      align="center"
-      {...maxWidthProps}
-    >
+    <Flex as="footer" width="full" align="center" {...maxWidthProps}>
       <Text>
         2020 -{" "}
         <Link isExternal href="https://sznm.dev" fontWeight={500}>

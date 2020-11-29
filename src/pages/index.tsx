@@ -7,10 +7,10 @@ const Home = () => {
   return (
     <Box>
       <Box marginBottom={4}>
-        <Heading color="gray.200" as="h2" fontSize="2xl">
+        <Heading as="h2" fontSize="2xl">
           Hello
         </Heading>
-        <Box color="gray.300">
+        <Box>
           <Text fontSize="0.9rem">Generate an "Add to Calendar" link.</Text>
           <Text fontSize="0.7rem">
             Currently only support Google Calendar ("Add to Google Calendar").

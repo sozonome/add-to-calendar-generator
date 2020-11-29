@@ -11,15 +11,8 @@ const Header = () => {
     <Flex as="header" width="full" align="center" {...maxWidthProps}>
       <Link href="/" passHref>
         <Box flexBasis="100%">
-          <Heading
-            as="h1"
-            color={colorMode === "light" ? "blue.600" : "gray.900"}
-            style={{ WebkitTextStroke: "1px white" }}
-            fontSize={["2xl", "3xl"]}
-          >
-            Add to Calendar
-          </Heading>
-          <Heading fontSize={["2xl", "3xl"]} color="white">
+          <Heading fontSize={["2xl", "3xl"]}>
+            Add to Calendar <br />
             Generator
           </Heading>
         </Box>
