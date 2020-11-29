@@ -3752,11 +3752,6 @@ focus-lock@^0.7.0:
   resolved "https://registry.yarnpkg.com/focus-lock/-/focus-lock-0.7.0.tgz#b2bfb0ca7beacc8710a1ff74275fe0dc60a1d88a"
   integrity sha512-LI7v2mH02R55SekHYdv9pRHR9RajVNyIJ2N5IEkWbg7FT5ZmJ9Hw4mWxHeEUcd+dJo0QmzztHvDvWcc7prVFsw==
 
-fontsource-rubik@^3.0.10:
-  version "3.0.10"
-  resolved "https://registry.yarnpkg.com/fontsource-rubik/-/fontsource-rubik-3.0.10.tgz#03175eb808e9a6aa5f0e42089ad7224447cc1fe2"
-  integrity sha512-7wfwz0Wf8AWoSzWEmaqSt5yA0TQWpShPT4GL+CeIAuKV3G81eFbJK1jUsZnInFNu5Mt0hVXjXTpP5d6nVvROSg==
-
 for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
@@ -6663,6 +6658,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typeface-rubik@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/typeface-rubik/-/typeface-rubik-1.1.13.tgz#c01d40f05718590bc05d08ea404666a8ef56377a"
+  integrity sha512-mMWgn3bYfT6V4WWA3yvdEM3AkTA7iK1XwhlOX3+vWfqHc6O9I2RUsi9krEXzNdQ1UE/eoEFBRigMtu30PsdEDg==
 
 typescript@^3.9.7:
   version "3.9.7"
