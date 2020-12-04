@@ -12,6 +12,7 @@ const Layout = ({ children }) => {
     <Box
       backgroundColor={colorMode === "light" ? "gray.50" : "gray.900"}
       minHeight="100vh"
+      transition="0.4s ease-out"
     >
       <Meta />
       <Header />
