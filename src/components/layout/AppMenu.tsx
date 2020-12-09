@@ -37,12 +37,6 @@ const apps: AppsType[] = [
     icon: "https://instadld.sznm.dev/instadld.svg",
     url: "https://instadld.sznm.dev",
   },
-  {
-    name: "YTGet",
-    description: "YouTube video and audio downloader",
-    icon: "https://ytget.sznm.dev/ytget.svg",
-    url: "https://ytget.sznm.dev",
-  },
 ];
 
 const AppMenu = () => {
