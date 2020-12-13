@@ -28,13 +28,13 @@ const apps: AppsType[] = [
   {
     name: "Covid-19 Data",
     description: "Monitor global covid-19 stats",
-    icon: "https://covid19.sznm.dev/covid-19-data.svg",
+    icon: "https://sznm.dev/app_icons/covid-19-data.svg",
     url: "https://covid19.sznm.dev",
   },
   {
     name: "InstaDLD",
     description: "Instagram Post downloader. Support multipost download",
-    icon: "https://instadld.sznm.dev/instadld.svg",
+    icon: "https://sznm.dev/app_icons/instadld.svg",
     url: "https://instadld.sznm.dev",
   },
 ];
