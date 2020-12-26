@@ -5,7 +5,7 @@ const Badges = () => {
 
   return (
     <Link
-      href="https://www.producthunt.com/posts/public-apis-3?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-public-apis-3"
+      href="https://www.producthunt.com/posts/add-to-calendar-generator?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-add-to-calendar-generator"
       target="_blank"
     >
       <Image
