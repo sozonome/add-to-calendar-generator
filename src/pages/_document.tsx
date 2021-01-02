@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-const APP_NAME = "add-to-calendar-generator";
+export const APP_NAME = "Add to Calendar Generator";
 const APP_DESCRIPTION = "Add to Calendar Generator";
 
 class MyDocument extends Document {
