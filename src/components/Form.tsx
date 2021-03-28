@@ -349,7 +349,11 @@ const Form = () => {
                 >
                   Copy Embed Button
                 </Button>
-                <Text textAlign="center" fontSize="0.8rem" color="gray.200">
+                <Text
+                  textAlign="center"
+                  fontSize="0.8rem"
+                  color={colorMode === "light" ? "gray.600" : "gray.200"}
+                >
                   Copy the embed button to your web page.
                 </Text>
               </>

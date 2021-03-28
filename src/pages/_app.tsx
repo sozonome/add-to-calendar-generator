@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import Head from "next/head";
-import "fontsource-rubik/latin.css";
+import "@fontsource/rubik/latin.css";
 
 import Layout from "../components/layout";
 

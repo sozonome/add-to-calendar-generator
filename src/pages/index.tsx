@@ -1,5 +1,4 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
-import Image from "next/image";
+import { Box, Heading, Image, Text } from "@chakra-ui/react";
 
 import Form from "../components/Form";
 
@@ -21,7 +20,7 @@ const Home = () => {
       <Box display={["block", "block", "flex"]}>
         <Box flexBasis="50%">
           <Box maxWidth={["100%", "60%", "80%"]}>
-            <Image src={"/Events-bro.svg"} unsized />
+            <Image src={"/Events-bro.svg"} layout="fill" />
           </Box>
         </Box>
         <Box flexBasis="50%">
