@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.0",
-    "@emotion/react": "^11.1.5",
+    "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@fontsource/rubik": "^4.3.0",
     "formik": "^2.2.6",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@types/node": "^14.14.41",
     "@types/react": "^17.0.4",
-    "prettier": "^2.2.1",
+    "prettier": "^2.3.0",
     "standard-version": "^9.3.0",
     "typescript": "^4.2.4"
   }
