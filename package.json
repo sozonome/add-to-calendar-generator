@@ -24,7 +24,7 @@
     "react-icons": "^4.2.0"
   },
   "devDependencies": {
-    "@types/node": "^14.17.1",
+    "@types/node": "^15.0.2",
     "@types/react": "^17.0.4",
     "prettier": "^2.3.0",
     "standard-version": "^9.3.0",
