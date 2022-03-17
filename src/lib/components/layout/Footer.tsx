@@ -1,6 +1,6 @@
 import { Box, Link, Flex, Text } from "@chakra-ui/react";
 
-import { maxWidthProps } from "styles/customTheme";
+import { maxWidthProps } from "lib/styles/customTheme";
 
 import Badges from "./Badges";
 

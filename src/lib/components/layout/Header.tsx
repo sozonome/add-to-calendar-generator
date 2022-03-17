@@ -1,7 +1,7 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import Link from "next/link";
 
-import { maxWidthProps } from "styles/customTheme";
+import { maxWidthProps } from "lib/styles/customTheme";
 
 import AppMenu from "./AppMenu";
 import ThemeToggle from "./ThemeToggle";
