@@ -6,7 +6,7 @@ import "@fontsource/rubik/latin.css";
 import Layout from "lib/components/layout";
 import customTheme from "lib/styles/customTheme";
 
-import "styles/globals.css";
+import "lib/styles/globals.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
