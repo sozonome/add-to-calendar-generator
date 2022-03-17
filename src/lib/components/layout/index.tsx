@@ -1,6 +1,6 @@
 import { Box, useColorMode } from "@chakra-ui/react";
 
-import { maxWidthProps } from "styles/customTheme";
+import { maxWidthProps } from "lib/styles/customTheme";
 
 import Footer from "./Footer";
 import Header from "./Header";

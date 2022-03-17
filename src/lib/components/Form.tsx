@@ -23,8 +23,8 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
-import { GOOGLE_CAL_TEMPLATE_LINK } from "constants/googlecal";
-import { getLocaleTimeString } from "utils/getLocaleTimeString";
+import { GOOGLE_CAL_TEMPLATE_LINK } from "lib/constants/googlecal";
+import { getLocaleTimeString } from "lib/utils/getLocaleTimeString";
 
 import MotionBox from "./MotionBox";
 
