@@ -1,4 +1,4 @@
-import { Grid, Image, Link, useColorMode } from "@chakra-ui/react";
+import { Image, Link, useColorMode } from "@chakra-ui/react";
 
 const Badges = () => {
   const { colorMode } = useColorMode();

@@ -1,11 +1,16 @@
 import { Box, useColorMode } from "@chakra-ui/react";
 
-import Header from "./Header";
-import Footer from "./Footer";
-import Meta from "./Meta";
-import { maxWidthProps } from "../../styles/customTheme";
+import { maxWidthProps } from "styles/customTheme";
 
-const Layout = ({ children }) => {
+import Footer from "./Footer";
+import Header from "./Header";
+import Meta from "./Meta";
+
+type LayoutProps = {
+  children: React.ReactNode;
+};
+
+const Layout = ({ children }: LayoutProps) => {
   const { colorMode } = useColorMode();
 
   return (

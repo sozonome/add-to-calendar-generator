@@ -1,13 +1,13 @@
+/* eslint-disable sonarjs/no-nested-template-literals */
 /**
  * @todo
  * [ ] refactor this component into smaller components to improve maintainability and readability
  */
 
+import type { BoxProps, ButtonProps } from "@chakra-ui/react";
 import {
   Box,
-  BoxProps,
   Button,
-  ButtonProps,
   Code,
   FormControl,
   FormHelperText,
@@ -18,15 +18,15 @@ import {
   Textarea,
   useColorMode,
 } from "@chakra-ui/react";
-import { FormikErrors, useFormik } from "formik";
+import type { FormikErrors } from "formik";
+import { useFormik } from "formik";
 import { useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
+import { GOOGLE_CAL_TEMPLATE_LINK } from "constants/googlecal";
+import { getLocaleTimeString } from "utils/getLocaleTimeString";
+
 import MotionBox from "./MotionBox";
-
-import { getLocaleTimeString } from "../helpers/getLocaleTimeString";
-
-import { GOOGLE_CAL_TEMPLATE_LINK } from "../constants/googlecal";
 
 type FormInput = {
   title: string;
@@ -66,12 +66,12 @@ const Form = () => {
     onSubmit: (formValues: FormInput) => {
       setLink(
         `${GOOGLE_CAL_TEMPLATE_LINK}${
-          formValues.title && "&text=" + encodeURI(formValues.title)
+          formValues.title && `&text=${encodeURI(formValues.title)}`
         }${
           formValues.description &&
-          "&details=" + encodeURI(formValues.description)
+          `&details=${encodeURI(formValues.description)}`
         }${
-          formValues.location && "&location=" + encodeURI(formValues.location)
+          formValues.location && `&location=${encodeURI(formValues.location)}`
         }&dates=${new Date(formValues.start)
           .toISOString()
           .replace(/[-//:]+/g, "")}%2F${new Date(formValues.end)
@@ -251,7 +251,7 @@ const Form = () => {
                   value={end}
                   type="datetime-local"
                   onChange={handleChange}
-                  isInvalid={errors.end ? true : false}
+                  isInvalid={!!errors.end}
                   errorBorderColor="crimson"
                   borderColor="black"
                   borderRadius={8}
@@ -266,7 +266,7 @@ const Form = () => {
 
           <MotionBox {...childAnimationProps}>
             <Button
-              isDisabled={Object.keys(errors).length ? true : false}
+              isDisabled={!!Object.keys(errors).length}
               onClick={() => handleSubmit()}
               isFullWidth
               backgroundColor={colorMode === "light" ? "black" : "gray.600"}
@@ -293,11 +293,11 @@ const Form = () => {
 
           <Box>
             <Textarea
-              minHeight={"6rem"}
+              minHeight="6rem"
               value={link}
               isReadOnly
               marginBottom={2}
-              fontSize={"0.9rem"}
+              fontSize="0.9rem"
             />
             <Button
               onClick={handleCopyLink}
@@ -336,7 +336,7 @@ const Form = () => {
                   colorScheme="cyan"
                   padding={3}
                   borderRadius={6}
-                  fontSize={"0.7rem"}
+                  fontSize="0.7rem"
                 >
                   {embedButton}
                 </Code>

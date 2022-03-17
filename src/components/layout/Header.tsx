@@ -1,12 +1,12 @@
-import { Box, Flex, Heading, useColorMode } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import Link from "next/link";
-import { maxWidthProps } from "../../styles/customTheme";
+
+import { maxWidthProps } from "styles/customTheme";
+
 import AppMenu from "./AppMenu";
 import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
-  const { colorMode } = useColorMode();
-
   return (
     <Flex as="header" width="full" align="center" {...maxWidthProps}>
       <Link href="/" passHref>

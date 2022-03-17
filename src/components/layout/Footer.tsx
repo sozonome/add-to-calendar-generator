@@ -1,7 +1,7 @@
-import { Box, Link } from "@chakra-ui/react";
-import { Flex, Text } from "@chakra-ui/react";
-import { isNullOrUndefined } from "util";
-import { maxWidthProps } from "../../styles/customTheme";
+import { Box, Link, Flex, Text } from "@chakra-ui/react";
+
+import { maxWidthProps } from "styles/customTheme";
+
 import Badges from "./Badges";
 
 const Footer = () => {
