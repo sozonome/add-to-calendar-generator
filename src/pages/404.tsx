@@ -33,7 +33,7 @@ const Page404 = () => {
               backgroundColor={colorMode === "light" ? "cyan.600" : "teal.500"}
               color="white"
             >
-              Let's Head Back
+              Let&apos;s Head Back
             </Button>
           </Link>
         </Box>
