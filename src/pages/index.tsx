@@ -20,7 +20,7 @@ const Home = () => {
       <Box display={["block", "block", "flex"]}>
         <Box flexBasis="50%">
           <Box maxWidth={["100%", "60%", "80%"]}>
-            <Image src={"/Events-bro.svg"} layout="fill" />
+            <Image src={"/Events-bro.svg"} />
           </Box>
         </Box>
         <Box flexBasis="50%">
