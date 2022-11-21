@@ -9,7 +9,7 @@ import ThemeToggle from "./ThemeToggle";
 const Header = () => {
   return (
     <Flex as="header" width="full" align="center" {...maxWidthProps}>
-      <Link href="/" passHref>
+      <Link href="/">
         <Box flexBasis="100%">
           <Heading fontSize={["2xl", "3xl"]}>
             Add to Calendar <br />
