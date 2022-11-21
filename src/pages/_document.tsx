@@ -1,5 +1,8 @@
+import { ColorModeScript } from "@chakra-ui/react";
 import type { DocumentContext } from "next/document";
 import Document, { Html, Head, Main, NextScript } from "next/document";
+
+import customTheme from "lib/styles/customTheme";
 
 export const APP_NAME = "Add to Calendar Generator";
 const APP_DESCRIPTION = "Add to Calendar Generator";
@@ -36,6 +39,9 @@ class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
         </Head>
         <body>
+          <ColorModeScript
+            initialColorMode={customTheme.config?.initialColorMode}
+          />
           <Main />
           <NextScript />
         </body>

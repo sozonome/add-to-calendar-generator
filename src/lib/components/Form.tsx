@@ -25,6 +25,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 
 import { GOOGLE_CAL_TEMPLATE_LINK } from "lib/constants/googlecal";
 import { getLocaleTimeString } from "lib/utils/getLocaleTimeString";
+import { trimmedIsoString } from "lib/utils/trimmedIsoString";
 
 import MotionBox from "./MotionBox";
 
@@ -72,11 +73,9 @@ const Form = () => {
           `&details=${encodeURI(formValues.description)}`
         }${
           formValues.location && `&location=${encodeURI(formValues.location)}`
-        }&dates=${new Date(formValues.start)
-          .toISOString()
-          .replace(/[-//:]+/g, "")}%2F${new Date(formValues.end)
-          .toISOString()
-          .replace(/[-//:]+/g, "")}`
+        }&dates=${trimmedIsoString(formValues.start)}%2F${trimmedIsoString(
+          formValues.end
+        )}`
       );
 
       setIsEditMode(false);
@@ -268,7 +267,7 @@ const Form = () => {
             <Button
               isDisabled={!!Object.keys(errors).length}
               onClick={() => handleSubmit()}
-              isFullWidth
+              width="full"
               backgroundColor={colorMode === "light" ? "black" : "gray.600"}
               color="white"
               {...contraButtonStyle}
@@ -301,7 +300,7 @@ const Form = () => {
             />
             <Button
               onClick={handleCopyLink}
-              isFullWidth
+              width="full"
               backgroundColor="blue.700"
               color="white"
               marginBottom={2}
@@ -319,7 +318,7 @@ const Form = () => {
             {!isShowingEmbed && (
               <Button
                 onClick={generateEmbedButton}
-                isFullWidth
+                width="full"
                 marginBottom={2}
                 backgroundColor="blue.500"
                 color="white"
@@ -341,7 +340,7 @@ const Form = () => {
                   {embedButton}
                 </Code>
                 <Button
-                  isFullWidth
+                  width="full"
                   onClick={handleCopyEmbedButton}
                   colorScheme="cyan"
                   marginBottom={2}
