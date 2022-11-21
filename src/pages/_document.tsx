@@ -8,9 +8,8 @@ export const APP_NAME = "Add to Calendar Generator";
 const APP_DESCRIPTION = "Add to Calendar Generator";
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
+  static getInitialProps(ctx: DocumentContext) {
+    return Document.getInitialProps(ctx);
   }
 
   render() {

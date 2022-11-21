@@ -1,4 +1,4 @@
-import { Box, useColorMode } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 import { maxWidthProps } from "lib/styles/customTheme";
 
@@ -11,14 +11,8 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  const { colorMode } = useColorMode();
-
   return (
-    <Box
-      backgroundColor={colorMode === "light" ? "gray.50" : "gray.900"}
-      minHeight="100vh"
-      transition="0.4s ease-out"
-    >
+    <Box minHeight="100vh" transition="0.4s ease-out">
       <Meta />
       <Header />
       <Box>
